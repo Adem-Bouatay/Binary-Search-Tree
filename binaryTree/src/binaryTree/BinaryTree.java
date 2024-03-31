@@ -135,9 +135,11 @@ public class BinaryTree{
 			}
 		}
 	}
-	public Node minimum(Node node) {
+	public int minimum(Node node) {
 		if (node.left == null) {
-			return node;
+			int key = node.key;
+			node = null;
+			return key;
 		}
 		else {
 			return minimum(node.left);
@@ -151,47 +153,33 @@ public class BinaryTree{
 			Node node = root;
 			while(true) {
 				System.out.println(node.key);
-				if (node.left != null && node.left.key == key) {
-					if (node.left.left == null && node.left.right == null ) {
-						node.left = null;
-						break;
-					}
-					else if (node.left.left == null) {
-						node.left = node.left.right;
-						break;
-					}
-					else if (node.left.right == null) {
-						node.left = node.left.left;
-						break;
-					}
-					else {
-						node.left.key = minimum(node.left.right).key;
-						remove(minimum(node.left.right).key);
-					}
-				}
-				else if (node.right != null && node.right.key == key) {
-					if (node.right.left == null && node.right.right == null ) {
-						node.right = null;
-						break;
-					}
-					else if (node.right.left == null) {
-						node.right = node.right.right;
-						break;
-					}
-					else if (node.right.right == null) {
-						node.right = node.right.left;
-						break;
-					}
-					else {
-						node.right.key = minimum(node.right.right).key;
-						remove(minimum(node.right.right).key);
-					}
-				}
-				else if (key < node.key) {
-					node = node.left;
+				Node target = null;
+				if (key < node.key) {
+					target = node.left;
 				}
 				else if (key > node.key) {
-					node = node.right;
+					target = node.right;
+				}
+				if (target.key == key) {
+					if (target.left == null) {
+						target = target.right;
+						break;
+					}
+					else if (target.right == null) {
+						target = target.left;
+						break;
+					}
+					else if (target.left == null && target.right == null) {
+						target = null;
+						break;
+					}
+					else {
+						target.key = minimum(target.right);
+						break;
+					}
+				}
+				else {
+					node = target;
 				}
 			}
 		}

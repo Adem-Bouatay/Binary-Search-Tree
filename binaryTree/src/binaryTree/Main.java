@@ -11,8 +11,8 @@ public class Main {
 		tree.insertKey(6);
 		tree.insertKey(4);
 		tree.insertKey(7);
-		System.out.println(tree.root.left.right);
-		tree.remove(6);
-		System.out.println(tree);
+		System.out.println(tree.root.left);
+		tree.remove(3);
+		System.out.println(tree.root.left);
 	}
 }
