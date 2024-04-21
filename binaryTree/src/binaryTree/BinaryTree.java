@@ -136,9 +136,9 @@ public class BinaryTree{
 		}
 	}
 	public int minimum(Node node) {
-		if (node.left == null) {
-			int key = node.key;
-			node = node.left;
+		if (node.left.left == null) {
+			int key = node.left.key;
+			node.left = null;
 			return key;
 		}
 		else {
@@ -182,7 +182,12 @@ public class BinaryTree{
 						break;
 					}
 					else {
-						target.key = minimum(target.right);
+						if (target.right.left == null) {
+							target.key = target.right.key;
+							target.right = null;
+						}
+						else
+							target.key = minimum(target.right);
 						break;
 					}
 				}
