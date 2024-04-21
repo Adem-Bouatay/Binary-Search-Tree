@@ -138,7 +138,7 @@ public class BinaryTree{
 	public int minimum(Node node) {
 		if (node.left == null) {
 			int key = node.key;
-			node = null;
+			node = node.left;
 			return key;
 		}
 		else {
@@ -152,7 +152,6 @@ public class BinaryTree{
 		else if (this.contains(key)) {
 			Node node = root;
 			while(true) {
-				System.out.println(node.key);
 				Node target = null;
 				if (key < node.key) {
 					target = node.left;
@@ -162,15 +161,24 @@ public class BinaryTree{
 				}
 				if (target.key == key) {
 					if (target.left == null) {
-						target = target.right;
+						if (target == node.left) 
+							node.left = target.right;
+						else
+							node.right = target.right;
 						break;
 					}
 					else if (target.right == null) {
-						target = target.left;
+						if (target == node.left) 
+							node.left = target.left;
+						else
+							node.right = target.left;
 						break;
 					}
 					else if (target.left == null && target.right == null) {
-						target = null;
+						if (target == node.left) 
+							node.left = null;
+						else
+							node.right = null;
 						break;
 					}
 					else {
@@ -187,21 +195,28 @@ public class BinaryTree{
 	public String toString() {
 		return root.toString();
 	}
-	public void printInOrder() {
-	    if (root == null) {
-	        System.out.println("Tree is empty");
-	    } else {
-	        printInOrder(root);
-	    }
-	}
+	public static void printBinaryTree(Node root) {
+        printBinaryTree(root, 0);
+    }
 
-	private void printInOrder(Node node) {
-	    if (node != null) {
-	        printInOrder(node.left);
-	        System.out.print(node.key + " ");
-	        printInOrder(node.right);
-	    }
-	}
+    private static void printBinaryTree(Node node, int depth) {
+        if (node == null) {
+            return;
+        }
+
+        // Print right subtree
+        printBinaryTree(node.right, depth + 1);
+
+        // Indent based on depth
+        for (int i = 0; i < depth; i++) {
+            System.out.print("    ");
+        }
+        // Print current node's value
+        System.out.println(node.key);
+
+        // Print left subtree
+        printBinaryTree(node.left, depth + 1);
+    }
 	
 	
 	
