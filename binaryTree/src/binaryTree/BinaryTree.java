@@ -77,9 +77,11 @@ public class BinaryTree{
 	public BinaryTree() {
 		root = null;
 	}
+	
 	public BinaryTree(int key) {
 		root = new Node(key);
 	}
+	
 	public void insertKey(int key) {
 		if (root == null) {
 			root = new Node(key);
@@ -109,10 +111,12 @@ public class BinaryTree{
 			}
 		}
 	}
+	
 	public boolean isBinarySearchTree() {
 		return root.isBinarySearchTree();
 		
 	}
+	
 	public boolean contains(int key) {
 		if (root == null) {
 			return false;
@@ -200,6 +204,7 @@ public class BinaryTree{
 	public String toString() {
 		return root.toString();
 	}
+	
 	public static void printBinaryTree(Node root) {
         printBinaryTree(root, 0);
     }

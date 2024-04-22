@@ -1,21 +1,29 @@
 package binaryTree;
 
-public class Main {
-	public static void main(String[] args) {
-		BinaryTree tree = new BinaryTree(8);
-		tree.insertKey(2);
-		tree.insertKey(10);
-		tree.insertKey(1);
-		tree.insertKey(6);
-		tree.insertKey(14);
-		tree.insertKey(4);
-		tree.insertKey(7);
-		tree.insertKey(13);
-		tree.insertKey(3);
-		BinaryTree.printBinaryTree(tree.root);
-		tree.remove(10);
-		System.out.println("\n");
-		BinaryTree.printBinaryTree(tree.root);
+import java.util.Scanner;
 
+public class Main {
+	public static void main(String[] args) {	
+		BinaryTree tree;
+		while(true) {
+			Scanner read = new Scanner(System.in);
+			Menu.Home();
+			System.out.print("\nEnter your choice: ");
+			int userChoice = read.nextInt();
+			while(userChoice<1 || userChoice>7) {
+				System.out.print("Enter an integer 1--7: ");
+				userChoice = read.nextInt();
+			}
+			switch(userChoice) {
+				case (1): {
+					Menu.Create();
+					int userInput = read.nextInt();
+					tree = new BinaryTree(userInput);
+					Menu.ReturnMenu();
+					break;
+				}
+			}
+			read.close();
+		}
 	}
 }
