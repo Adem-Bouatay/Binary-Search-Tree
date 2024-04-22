@@ -36,14 +36,13 @@ public class Menu {
 		System.out.println("---------------------------------------------------------------------------------------------\n");
 		System.out.print("Do you want to return to the home Menu? [y/n]: ");
 		Scanner read = new Scanner(System.in);
-		char userChoice = read.next().charAt(0);
+		char userChoice = read.nextLine().charAt(0);
 		while ( userChoice != 'y' && userChoice != 'n') {
 			System.out.print("Enter y or n: ");
 			userChoice = read.next().charAt(0);
 		}
 		if (userChoice == 'y') {
-			System.out.println("---------------------------------------------------------------------------------------------");
+			System.out.println("");
 		}
-		read.close();	
 	}
 }
