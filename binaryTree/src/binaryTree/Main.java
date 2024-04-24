@@ -16,73 +16,94 @@ public class Main {
 			}
 			switch(userChoice) {
 				case 1: {
-					if (tree == null) {
-						Menu.Create();
-						int userInput = read.nextInt();
-						tree = new BinaryTree(userInput);
-						System.out.println("Tree created successfully!!");
-						BinaryTree.printTree(tree.root);
-					}
-					else 
+					while(true) {
+						if (tree == null) {
+							Menu.Create();
+							int userInput = read.nextInt();
+							tree = new BinaryTree(userInput);
+							System.out.println("Tree created successfully!!");
+							BinaryTree.printTree(tree.root);
+						}
+						else 
 						System.out.println("Tree is already created.");
-					Menu.ReturnMenu();
+						if (Menu.ReturnMenu()) {
+							break;
+						}
+					}
 					break;
 				}
 				case 2:{
-					if (tree != null) {
-						Menu.Add();
-						int userInput = read.nextInt();
-						tree.insertKey(userInput);
-						System.out.println("Element added successfully!!");
+					while(true) {
+						if (tree != null) {
+							Menu.Add();
+							int userInput = read.nextInt();
+							tree.insertKey(userInput);
+							System.out.println("Element added successfully!!");
+						}
+						else {
+							System.out.println("Create a tree first.");
+						}
+						if (Menu.ReturnMenu()) {
+							break;
+						}
 					}
-					else {
-						System.out.println("Create a tree first.");
-					}
-					Menu.ReturnMenu();
 					break;
 				}
 				case 3:{
-					if (tree != null) {
-						Menu.Search();
-						int userInput = read.nextInt();
-						if (tree.contains(userInput))
-							System.out.println("Element found!!");
-						else
-							System.out.println("Element not found!!");
+					while(true) {
+						if (tree != null) {
+							Menu.Search();
+							int userInput = read.nextInt();
+							if (tree.contains(userInput))
+								System.out.println("Element found!!");
+							else
+								System.out.println("Element not found!!");
+						}
+						else {
+							System.out.println("Create a tree first.");
+						}
+						if (Menu.ReturnMenu()) {
+							break;
+						}
 					}
-					else {
-						System.out.println("Create a tree first.");
-					}
-					Menu.ReturnMenu();
 					break;
 				}
 				case 4:{
-					if (tree != null) {
-						Menu.Remove();
-						int userInput = read.nextInt();
-						tree.remove(userInput);
-						System.out.println("Removed Successfully.");
+					while(true) {
+						if (tree != null) {
+							Menu.Remove();
+							int userInput = read.nextInt();
+							tree.remove(userInput);
+							System.out.println("Removed Successfully.");
+						}
+						else {
+							System.out.println("Create a tree first.");
+						}
+						if (Menu.ReturnMenu()) {
+							break;
+						}
 					}
-					else {
-						System.out.println("Create a tree first.");
-					}
-					Menu.ReturnMenu();
 					break;
 				}
 				case 5:{
-					if (tree != null) {
-						BinaryTree.printTree(tree.root);
+					while(true) {
+						if (tree != null) {
+							BinaryTree.printTree(tree.root);
+						}
+						else {
+							System.out.println("Create a tree first.");
+						}
+						if (Menu.ReturnMenu()) {
+							break;
+						}
 					}
-					else {
-						System.out.println("Create a tree first.");
-					}
-
-					Menu.ReturnMenu();
 					break;
 				}
 				case 6:{
-					Menu.Exit();
-					return;
+					if(Menu.Exit())
+						return;
+					else
+						break;
 				}
 			}
 		}

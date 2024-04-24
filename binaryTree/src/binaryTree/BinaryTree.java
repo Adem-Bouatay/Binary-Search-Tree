@@ -156,23 +156,6 @@ public class BinaryTree{
         }
         System.out.println(node.key);
         printTree(node.left, depth + 1, "left");
-    }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+    }	
 }
 

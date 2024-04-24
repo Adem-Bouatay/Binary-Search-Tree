@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Menu {
 	static void Home() {
-		System.out.println("------------------------------------------------Welcome------------------------------------------------\n");
+		System.out.println("-------------------------------------Welcome--------------------------------------\n");
 		System.out.println("1- Create a binary search tree");
 		System.out.println("2- Add an element to the tree");
 		System.out.println("3- Search for an element in the tree");
@@ -28,21 +28,32 @@ public class Menu {
 		System.out.println("------------------------------------------Remove-Page------------------------------------------\n");
 		System.out.print("Enter the element you want to remove: ");
 	}
-	static void Exit() {
+	static boolean Exit() {
 		System.out.println("------------------------------------------Exit-Page--------------------------------------------\n");
 		System.out.print("Are you sure ? [y/n]: ");
-	}
-	static void ReturnMenu() {
-		System.out.println("-----------------------------------------------------------------------------------------------\n");
-		System.out.print("Do you want to return to the home Menu? [y/n]: ");
 		Scanner read = new Scanner(System.in);
 		char userChoice = read.nextLine().charAt(0);
 		while ( userChoice != 'y' && userChoice != 'n') {
 			System.out.print("Enter y or n: ");
 			userChoice = read.next().charAt(0);
 		}
-		if (userChoice == 'y') {
-			System.out.println("");
+		if (userChoice == 'y')
+			return true;
+		else 
+			return false;
+	}
+	static boolean ReturnMenu() {
+		System.out.println("-----------------------------------------------------------------------------------------------\n");
+		System.out.print("Do you want to return to the home menu? [y/n]: ");
+		Scanner read = new Scanner(System.in);
+		char userChoice = read.nextLine().charAt(0);
+		while ( userChoice != 'y' && userChoice != 'n') {
+			System.out.print("Enter y or n: ");
+			userChoice = read.next().charAt(0);
 		}
+		if (userChoice == 'y')
+			return true;
+		else 
+			return false;
 	}
 }
