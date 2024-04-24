@@ -134,7 +134,7 @@ public class BinaryTree{
 		return root.toString();
 	}
 	
-	public static void printBinaryTree(Node root) {
+	public static void printTree(Node root) {
         printTree(root, 0, "root");
     }
 

@@ -21,7 +21,7 @@ public class Main {
 						int userInput = read.nextInt();
 						tree = new BinaryTree(userInput);
 						System.out.println("Tree created successfully!!");
-						BinaryTree.printBinaryTree(tree.root);
+						BinaryTree.printTree(tree.root);
 					}
 					else 
 						System.out.println("Tree is already created.");
@@ -71,7 +71,7 @@ public class Main {
 				}
 				case 5:{
 					if (tree != null) {
-						BinaryTree.printBinaryTree(tree.root);
+						BinaryTree.printTree(tree.root);
 					}
 					else {
 						System.out.println("Create a tree first.");
