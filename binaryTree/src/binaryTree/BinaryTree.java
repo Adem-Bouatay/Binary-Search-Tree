@@ -1,76 +1,5 @@
 package binaryTree;
 
-/*public class BinaryTree {
-	public int key;
-	public BinaryTree left;
-	public BinaryTree right;
-	
-	public BinaryTree(int key) {
-		this.key = key;
-		this.left = null;
-		this.right = null;
-	}
-	public void insertKey(int key) {
-		if (this.key > key) {
-			if (left == null) {
-				left = new BinaryTree(key);
-			}
-			else 
-				left.insertKey(key);
-		}
-		else if (this.key < key){
-			if (right == null) {
-				right = new BinaryTree(key);
-			}
-			else 
-				right.insertKey(key);
-		}
-	}
-	public boolean isBinarySearchTree() {
-		if (left == null && right == null) {
-			return true;
-		}
-		else {
-			if ((left != null && left.key > key) || (right != null && right.key < key)) {
-				return false;
-			}
-			else {
-				if (left == null) {
-					return right.isBinarySearchTree();
-				}
-				else if (right == null) {
-					return left.isBinarySearchTree();
-				}
-				else {
-					return left.isBinarySearchTree() && right.isBinarySearchTree();
-				}
-			}
-		}
-	}
-	public boolean contains(int key) {
-		if (this.key == key) {
-				return true;
-		}
-		else if (this.key < key && right != null) {
-			return right.contains(key);
-		}
-		else if (this.key > key && left != null){
-			return left.contains(key);
-		} 	
-		else {
-			return false;
-		}
-	}
-	public boolean singleNode() {
-		return left == null || right == null;
-	}
-	public void remove(int key) {
-	}
-	public String toString() {
-		return "	Key: " + key + (left == null? "" : "\nLeft" + left) + (right == null? "" : "		Right" + right);
-	}
-}*/
-
 public class BinaryTree{
 	public Node root;
 	
@@ -139,7 +68,7 @@ public class BinaryTree{
 			}
 		}
 	}
-	public int minimum(Node node) {
+	private int minimum(Node node) {
 		if (node.left.left == null) {
 			int key = node.left.key;
 			node.left = null;
@@ -206,26 +135,27 @@ public class BinaryTree{
 	}
 	
 	public static void printBinaryTree(Node root) {
-        printBinaryTree(root, 0);
+        printTree(root, 0, "root");
     }
 
-    private static void printBinaryTree(Node node, int depth) {
+    private static void printTree(Node node, int depth, String type) {
         if (node == null) {
             return;
         }
-
-        // Print right subtree
-        printBinaryTree(node.right, depth + 1);
-
-        // Indent based on depth
+        printTree(node.right, depth + 1, "right");
         for (int i = 0; i < depth; i++) {
-            System.out.print("    ");
+        	System.out.print("    ");
         }
-        // Print current node's value
+        switch(type) {
+			case "right":
+				System.out.print("/ ");
+				break;
+			case "left":
+				System.out.print("\\ ");
+				break;
+        }
         System.out.println(node.key);
-
-        // Print left subtree
-        printBinaryTree(node.left, depth + 1);
+        printTree(node.left, depth + 1, "left");
     }
 	
 	

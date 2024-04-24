@@ -19,6 +19,8 @@ public class Main {
 					Menu.Create();
 					int userInput = read.nextInt();
 					tree = new BinaryTree(userInput);
+					System.out.println("Tree created successfully!!");
+					BinaryTree.printBinaryTree(tree.root);
 					Menu.ReturnMenu();
 					break;
 				}
@@ -26,20 +28,24 @@ public class Main {
 					Menu.Add();
 					int userInput = read.nextInt();
 					tree.insertKey(userInput);
+					System.out.println("Element added successfully!!");
 					Menu.ReturnMenu();
 					break;
 				}
 				case 3:{
 					Menu.Search();
 					int userInput = read.nextInt();
-					System.out.println(tree.contains(userInput));
+					if (tree.contains(userInput))
+						System.out.println("Element found!!");
+					else
+						System.out.println("Element not found!!");
 					Menu.ReturnMenu();
 					break;
 				}
 				case 4:{
 					Menu.Remove();
 					int userInput = read.nextInt();
-					tree.remove(userChoice);
+					tree.remove(userInput);
 					System.out.println("Removed Successfully.");
 					Menu.ReturnMenu();
 					break;
