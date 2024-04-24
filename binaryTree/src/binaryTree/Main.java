@@ -100,12 +100,16 @@ public class Main {
 					break;
 				}
 				case 6:{
-					if(Menu.Exit())
-						return;
+					if(Menu.Exit()) {
+						read.close();
+						return;	
+					}
 					else
 						break;
 				}
 			}
+
 		}
 	}
+
 }
