@@ -31,6 +31,7 @@ public class Menu {
 	static boolean Exit() {
 		System.out.println("------------------------------------------Exit-Page--------------------------------------------\n");
 		System.out.print("Are you sure ? [y/n]: ");
+		@SuppressWarnings("resource")
 		Scanner read = new Scanner(System.in);
 		char userChoice = read.nextLine().charAt(0);
 		while ( userChoice != 'y' && userChoice != 'n') {
@@ -45,6 +46,7 @@ public class Menu {
 	static boolean ReturnMenu() {
 		System.out.println("-----------------------------------------------------------------------------------------------\n");
 		System.out.print("Do you want to return to the home menu? [y/n]: ");
+		@SuppressWarnings("resource")
 		Scanner read = new Scanner(System.in);
 		char userChoice = read.nextLine().charAt(0);
 		while ( userChoice != 'y' && userChoice != 'n') {

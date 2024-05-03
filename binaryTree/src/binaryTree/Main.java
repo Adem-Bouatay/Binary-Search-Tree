@@ -6,6 +6,7 @@ public class Main {
 	public static void main(String[] args) {	
 		BinaryTree tree = null;
 		while(true) {
+			@SuppressWarnings("resource")
 			Scanner read = new Scanner(System.in);
 			Menu.Home();
 			System.out.print("\nEnter your choice: ");
